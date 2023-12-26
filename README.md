@@ -1,7 +1,9 @@
-This repo serves like as an example of two services served together as a single pod.
-Note: this is a simplistic example. On production you might want to:
-- define the probes;
-- make sure sidecar fully starts before main app;
+This repo serves like as an example of two http services written in Python served together as a single pod.
+
+Note: this is a simplistic example. 
+On production you might want to:
+- define probes;
+- assure sidecar fully starts before main app (e.g. move sidecar into `initContainers` section) ;
 - think through what should happen if any of the apps is not healthy;
 - etc...
 
@@ -26,5 +28,6 @@ How to follow the example:
 - run `kubectl apply -f my_demo.yaml`
 - run `kubectl port-forward sidecar-python-demo 8080:80`
 
-Now you should be able to open localhost:80. Enjoy!
+Now you should be able to open localhost:80. 
+Good luck, sailor!
 
