@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-python-demo
+spec:
+  containers:
+  - image: localhost:5000/sidedemo
+    command: ["python"]
+    args: ["main.py"]
+    name: sidecar-container
+    env:
+      - name: "SIDECAR"
+        value: "localhost:3000"
+
+  - image: localhost:5000/sidedemo
+    name: main-container
+    command: ["python"]
+    args: ["side.py"]
+    env:
+      - name: "PORT"
+        value: "3000"
+    ports:
+      - containerPort: 80
+  dnsPolicy: Default
+
